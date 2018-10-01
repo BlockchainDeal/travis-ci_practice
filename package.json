@@ -1,0 +1,7 @@
+{
+  "name": "@travisCIpractice",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.4.0"
+  }
+}
