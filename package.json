@@ -1,7 +1,33 @@
 {
   "name": "practiceIntegration",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "commit": "git-cz",
+    "lint": "lerna run lint",
+    "depcheck": "lerna run depcheck",
+    "prepare": "lerna run prepare",
+    "test": "cross-env CI_ENV=test jest --runInBand --detectOpenHandles"
+  },
   "devDependencies": {
-    "lerna": "^3.4.0"
+    "codecov": "^3.1.0",
+    "cross-env": "^5.2.0",
+    "depcheck": "^0.6.11",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^23.6.0",
+    "jest-extended": "^0.10.0",
+    "lerna": "^3.4.0",
+    "lint-staged": "^7.3.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "standard": "^12.0.1"
   }
 }
