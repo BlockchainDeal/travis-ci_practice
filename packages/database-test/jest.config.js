@@ -20,4 +20,3 @@ module.exports = {
   watchman: false,
   setupTestFrameworkScriptFile: 'jest-extended'
 }
-
