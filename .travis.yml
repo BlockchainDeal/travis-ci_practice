@@ -40,9 +40,6 @@ jobs:
     - stage: test
       script: lerna bootstrap && yarn test:ci
 
-    - stage: coverage
-    - script: bash < (curl -s https://codecov.io/bash) && yarn codecov
-
 after_success:
  - bash < (curl -s https://codecov.io/bash)
 
