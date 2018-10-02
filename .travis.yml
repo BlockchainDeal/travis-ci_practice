@@ -21,6 +21,7 @@ stages:
   - lint
   - depcheck
   - test
+  - coverage
 
 before_script:
   - 'if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi'
@@ -37,7 +38,10 @@ jobs:
       script: yarn depcheck
 
     - stage: test
-      script: yarn test:ci && yarn codecov
+      script: lerna bootstrap && yarn test:ci
+
+    - stage: coverage
+    - script: bash < (curl -s https://codecov.io/bash) && yarn codecov
 
 after_success:
  - bash < (curl -s https://codecov.io/bash)
