@@ -9,7 +9,7 @@
   "license": "GPL 2.0",
   "main": "lib/index.js",
   "scripts": {
-    "test": "CI_ENV=test jest --forceExit",
+    "test": "CI_ENV=test jest --runInBand --detectOpenHandles",
     "test:coverage": "CI_ENV=test jest --coverage --forceExit",
     "test:debug": "CI_ENV=test node --inspect-brk ../../node_modules/.bin/jest --runInBand --watch",
     "test:watch": "CI_ENV=test jest --runInBand --watch",
