@@ -18,10 +18,7 @@ before_install:
   - yarn config set cache-folder $HOME/.cache/yarn
 
 stages:
-  - lint
-  - depcheck
   - test
-  - coverage
 
 before_script:
   - 'if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0; fi'
@@ -31,17 +28,8 @@ sleep 3; fi'
 
 jobs:
   include:
-    - stage: lint
-      script: yarn lint
-
-    - stage: depcheck
-      script: yarn depcheck
-
     - stage: test
-      script: lerna bootstrap && yarn test:ci
-
-after_success:
- - bash < curl -s https://codecov.io/bash
+      script: yarn lint && yarn depcheck && lerna bootstrap && yarn test:ci && curl -s https://codecov.io/bash | bash
 
 cache:
   yarn: true
