@@ -28,10 +28,6 @@ before_script:
 sleep 3; fi'
   - sudo redis-server /etc/redis/redis.conf --port 6379
 
-script:
-  - yarn test:force-exit --ci --coverage
-  - codecov
-
 jobs:
   include:
     - stage: lint
@@ -39,6 +35,12 @@ jobs:
 
     - stage: depcheck
       script: yarn depcheck
+
+    - stage: test
+      script: yarn test:ci && yarn codecov
+
+after_success:
+ - bash < (curl -s https://codecov.io/bash)
 
 cache:
   yarn: true
